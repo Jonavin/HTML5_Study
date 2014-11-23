@@ -3,14 +3,36 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>鼠标选取canvas区域</title>
+    <style>
+        body{
+            background: rgba(100,145,250,0.3);
+        }
+        #canvas{
+            margin-left: 20px;
+            margin-bottom: 10px;
+            margin-right: 0;
+            border:thin solid #aaa;
+            padding: 0;
+        }
+        #controls{
+            margin:20px 0 20px 20px;
+        }
+        #selector{
+            position: absolute;
+            border:3px solid blue;
+            cursor: crosshair;
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <div id="controls">
     <input type="button" id="resetBtn" value="重置"/>
 </div>
+<div id="selector"></div>
 <canvas id="canvas" width="800" height="520">
     不支持canvas
 </canvas>
-</body>
 <script src="mouseSelect.js"></script>
+</body>
 </html>

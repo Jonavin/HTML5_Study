@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>canvas钟表</title>
+    <style>
+        body{
+            background: #ddd;
+        }
+        body{
+            background: #aaaaaa;
+        }
+        #canvas{
+            position: absolute;
+            left:10px;
+            top:1.5em;
+            margin:20px;
+            border: thin solid dodgerblue;
+            background: #fff;
+        }
+        #snapshotImg{
+            position: absolute;
+            display: none;
+            left: 10px;
+            top:1.5em;
+            margin:20px;
+            border: thin solid dodgerblue;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+  <div id="controls">
+      <input type="button" id="snapshotBtn" value="快照"/>
+  </div>
+  <img id="snapshotImg"/>
+  <canvas id="canvas" width="500" height="300"></canvas>
+</body>
+<script src="clock.js"></script>
+</html>

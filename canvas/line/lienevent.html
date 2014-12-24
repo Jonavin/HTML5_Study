@@ -1,0 +1,70 @@
+<html>
+ <head></head>
+ <body>
+    
+	<canvas id = "lineCvs" width="300" height="300" style="background:#eee;"></canvas>
+    <script>
+	 var IN = false;
+     var BOLD = false;
+     var line = {
+		x1:100,
+		x2:200,
+		y1:50,
+		y2:150
+	 }
+     /**
+	 **判断点是否在线上
+	 **/
+	 function pointInLine(point){      
+		 return (point.y-line.y2)* (line.x1-line.x2) == (point.x-line.x2)*(line.y1-line.y2);
+     }
+     
+	 var cvs = document.getElementById("lineCvs"),ctx = cvs.getContext("2d");
+     ctx.strokeStyle="skyblue";
+	 ctx.lineWidth = 5;
+	 ctx.beginPath();
+     ctx.lineTo(line.x1,line.y1);
+	 ctx.lineTo(line.x2,line.y2);
+     ctx.stroke();
+     /**
+	 鼠标在canvas上移动
+	 **/
+     cvs.addEventListener("mousemove",function (e){
+	     var mousePoint = {
+		    x:e.pageX,
+			y:e.pageY
+		 };
+         var isIn = pointInLine(mousePoint);
+		 if(isIn){
+			cvs.style.cursor = "pointer";
+			IN = true;
+		 }else{
+			cvs.style.cursor = "default"; 
+			IN = false;
+		 }
+	 });
+	 /**
+	 **canvas注册点击事件 重新绘制线条
+	 **/
+	 cvs.addEventListener("click",function (e){
+		if(IN&&!BOLD){
+		   ctx.clearRect(0,0,300,300);	
+		   ctx.strokeStyle="#587dbf";
+		   ctx.lineWidth = 10;
+		   ctx.lineTo(line.x1,line.y1);
+		   ctx.lineTo(line.x2,line.y2);
+		   ctx.stroke();
+           BOLD = true;
+		}else if(IN&&BOLD){
+           ctx.clearRect(0,0,300,300);	
+		   ctx.strokeStyle="skyblue";
+		   ctx.lineWidth = 5;
+		   ctx.lineTo(line.x1,line.y1);
+		   ctx.lineTo(line.x2,line.y2);
+		   ctx.stroke();
+           BOLD = false;
+        }
+	 });
+	</script>
+ </body>
+</html>
